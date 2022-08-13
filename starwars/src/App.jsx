@@ -1,10 +1,12 @@
-
+import { Outlet } from "react-router-dom"
+import Navbar from "./components/Navbar"
 
 function App() {
 
   return (
     <div className="App">
-      <h1>Star Wars API</h1>
+      <Navbar/>
+      <Outlet/>
     </div>
   )
 }
