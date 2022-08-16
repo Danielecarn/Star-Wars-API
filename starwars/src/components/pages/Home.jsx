@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import Loading from '../layout/Loading';
+import Card from '../Card';
+import { getUrlId } from '../utils/getUrlId';
 
 import api from '../../services/api';
 
-const Films = () => {
+const Home = () => {
 
   const [films, setFilms] = useState(null);
   
@@ -26,13 +28,12 @@ const Films = () => {
     <>
       <div>Films</div>
       {Array.isArray(films) ? films.map(film => (
-          <li key={film.title}>
-             <b>Nome:</b>{film.title}<br/>
-          </li>
-            ))
+          <Card key={film.title} imgURL={`https://starwars-visualguide.com/assets/img/films/${getUrlId(
+            film.url,)}.jpg`} title={film.title}/>
+        ))
         : (<Loading/>)}
     </>
   )
 }
 
-export default Films
+export default Home;
