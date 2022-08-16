@@ -12,9 +12,6 @@ const Navbar = () => {
         </h2>
         <ul className='list'>
           <li className='item'>
-            <Link to ='/films'>Films</Link>
-          </li>
-          <li className='item'>
             <Link to='/people'>People</Link>
           </li>
           <li className='item'>

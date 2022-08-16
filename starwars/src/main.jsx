@@ -9,7 +9,6 @@ import Planets from './components/pages/Planets';
 import Species from './components/pages/Species'; 
 import Starships from './components/pages/Starships'; 
 import Vehicles from './components/pages/Vehicles'; 
-import Films from "./components/pages/Films";
 
 import './index.css';
 
@@ -19,7 +18,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<App />}>
           <Route path="/" element={<Home/>}/>
-          <Route path="films" element={<Films/>}/>
           <Route path="/people" element={<People/>}/>
           <Route path="/planets" element={<Planets/>}/>
           <Route path="/species" element={<Species/>}/>

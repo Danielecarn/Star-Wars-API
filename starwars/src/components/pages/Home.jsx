@@ -1,12 +1,38 @@
+import { useEffect, useState } from 'react';
+
+import Loading from '../layout/Loading';
+
+import api from '../../services/api';
+
+const Films = () => {
+
+  const [films, setFilms] = useState(null);
+  
+  useEffect(() => {
+    api.get("/films/")
+       .then((response) => {
+         console.log(response);
+         setFilms(response.data.results)
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro : " + err);
+      });
+  }, []);
 
 
-const Home = () => {
-    return (
-        <div className="Container">
-            <h2>Home</h2>
-            
-        </div>
-    )
+
+
+  return (
+    <>
+      <div>Films</div>
+      {Array.isArray(films) ? films.map(film => (
+          <li key={film.title}>
+             <b>Nome:</b>{film.title}<br/>
+          </li>
+            ))
+        : (<Loading/>)}
+    </>
+  )
 }
 
-export default Home;
+export default Films
