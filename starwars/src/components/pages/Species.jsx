@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+
 import api from "../../services/api";
+
 import Card from "../Card";
 import Loading from "../layout/Loading";
+
 import { getUrlId } from "../utils/getUrlId";
 
 const Species = () => {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Loading from '../layout/Loading';
 import Card from '../Card';
+
 import { getUrlId } from '../utils/getUrlId';
 
 import api from '../../services/api';
