@@ -7,6 +7,8 @@ import Loading from "../layout/Loading";
 
 import { getUrlId } from "../utils/getUrlId";
 
+import './CardsGrid.css';
+
 const Vehicles = () => {
   const [vehicles, setVehicles] = useState(null);
   
@@ -22,14 +24,22 @@ const Vehicles = () => {
   }, []);
 
   return (
-    <>
-      <div>Vehicles</div>
-      {Array.isArray(vehicles) ? vehicles.map(vehicle => (
-          <Card key={vehicles.title} imgURL={`https://starwars-visualguide.com/assets/img/vehicles/${getUrlId(
-            vehicle.url,)}.jpg`} title={vehicle.name}/>
-        ))
-        : (<Loading/>)}
-    </>
+    <div className="container">
+      <div className="title">
+        <h2>Vehicles</h2>
+      </div>
+      <div className="cards-container">
+        {Array.isArray(vehicles) ? vehicles.map(vehicle => (
+            <Card 
+              key={vehicles.title} 
+              imgURL={`https://starwars-visualguide.com/assets/img/vehicles/${getUrlId(vehicle.url,)}.jpg`} 
+              title={vehicle.name}
+              object={vehicle}
+            />
+          ))
+          : (<Loading/>)}
+      </div>
+    </div>
   )
 }
 

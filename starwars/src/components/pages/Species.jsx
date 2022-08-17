@@ -7,6 +7,9 @@ import Loading from "../layout/Loading";
 
 import { getUrlId } from "../utils/getUrlId";
 
+import './CardsGrid.css';
+import Planets from "./Planets";
+
 const Species = () => {
   const [species, setSpecies] = useState(null);
   
@@ -22,14 +25,22 @@ const Species = () => {
   }, []);
 
   return (
-    <>
-      <div>Species</div>
-      {Array.isArray(species) ? species.map(specie => (
-          <Card key={specie.name} imgURL={`https://starwars-visualguide.com/assets/img/species/${getUrlId(
-            specie.url,)}.jpg`} title={specie.name}/>
-        ))
-        : (<Loading/>)}
-    </>
+    <div className="container">
+      <div className="title">
+        <h2>Species</h2>
+      </div>
+      <div className="cards-container">
+        {Array.isArray(species) ? species.map(specie => (
+            <Card 
+              key={specie.name} 
+              imgURL={`https://starwars-visualguide.com/assets/img/species/${getUrlId(specie.url,)}.jpg`} 
+              title={specie.name}
+              object={specie}
+            />
+          ))
+          : (<Loading/>)}
+      </div>
+    </div>
   )
 }
 

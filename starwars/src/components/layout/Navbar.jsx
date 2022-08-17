@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
 
+import img from "../../img/people.png";
+
 import './Navbar.css';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-        <h2>
-            <Link to="/">
-                Star Wars API
-            </Link>
-        </h2>
+      <div className="logo">
+        <img src={img} alt="vader" />
+          <h2>
+              <Link to="/">
+                  Star Wars API
+              </Link>
+          </h2>
+      </div>
         <ul className='list'>
           <li className='item'>
             <Link to='/people'>People</Link>

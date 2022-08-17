@@ -7,6 +7,8 @@ import { getUrlId } from '../utils/getUrlId';
 
 import api from '../../services/api';
 
+import './CardsGrid.css';
+
 const Home = () => {
 
   const [films, setFilms] = useState(null);
@@ -22,18 +24,23 @@ const Home = () => {
       });
   }, []);
 
-
-
-
   return (
-    <>
-      <div>Films</div>
-      {Array.isArray(films) ? films.map(film => (
-          <Card key={film.title} imgURL={`https://starwars-visualguide.com/assets/img/films/${getUrlId(
-            film.url,)}.jpg`} title={film.title}/>
-        ))
-        : (<Loading/>)}
-    </>
+    <div className='container'>
+      <div className='title'>
+        <h2>Films</h2>
+      </div>
+        <div className='cards-container'>
+          {Array.isArray(films) ? films.map(film => (
+              <Card 
+                key={film.title} 
+                imgURL={`https://starwars-visualguide.com/assets/img/films/${getUrlId(film.url,)}.jpg`} 
+                title={film.title}
+                object= {film}
+              />
+            ))
+            : (<Loading/>)}
+        </div>
+    </div>
   )
 }
 

@@ -7,6 +7,8 @@ import Loading from "../layout/Loading";
 
 import { getUrlId } from "../utils/getUrlId";
 
+import './CardsGrid.css';
+
 const Starships = () => {
   const [starships, setStarships] = useState(null);
   
@@ -22,14 +24,22 @@ const Starships = () => {
   }, []);
 
   return (
-    <>
-      <div>Starships</div>
-      {Array.isArray(starships) ? starships.map(starship => (
-          <Card key={starship.name} imgURL={`https://starwars-visualguide.com/assets/img/starships/${getUrlId(
-            starship.url,)}.jpg`} title={starship.name}/>
-        ))
-        : (<Loading/>)}
-    </>
+    <div className="container">
+      <div className="title">
+        <h2>Starships</h2>
+      </div>
+      <div className="cards-container">
+        {Array.isArray(starships) ? starships.map(starship => (
+            <Card 
+              key={starship.name} 
+              imgURL={`https://starwars-visualguide.com/assets/img/starships/${getUrlId(starship.url,)}.jpg`} 
+              title={starship.name}
+              object={starship}
+            />
+          ))
+          : (<Loading/>)}
+      </div>
+    </div>
   )
 }
 

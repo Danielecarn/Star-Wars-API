@@ -1,8 +1,19 @@
 .navbar{
     display: flex;
     justify-content: space-between;
-    background-color: #222;
+    background-color: #111;
     padding: 1em;
+}
+
+.navbar img{
+    max-width: 50px;
+    max-height: 40px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .list{

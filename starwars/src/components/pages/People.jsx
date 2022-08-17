@@ -5,6 +5,8 @@ import api from '../../services/api';
 import Card from '../Card';
 import { getUrlId } from '../utils/getUrlId';
 
+import './CardsGrid.css';
+
 const People = () => {
   const [people, setPeople] = useState(null);
   
@@ -21,14 +23,22 @@ const People = () => {
 
 
   return (
-    <>
-      <div>People</div>
-      {Array.isArray(people) ? people.map(person => (
-          <Card key={person.name} imgURL={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
-            person.url,)}.jpg`} title={person.name}/>
-        ))
-        : (<Loading/>)}
-    </>
+    <div className='container'>
+      <div className='title'>
+        <h2>People</h2>
+      </div>
+      <div className='cards-container'>
+        {Array.isArray(people) ? people.map(person => (
+            <Card 
+              key={person.name} 
+              imgURL={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(person.url,)}.jpg`} 
+              title={person.name}
+              object={person}
+            />
+          ))
+          : (<Loading/>)}
+      </div>
+    </div>
   )
 }
 
