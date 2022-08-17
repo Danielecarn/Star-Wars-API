@@ -16,12 +16,14 @@ const Planet = () => {
   const id = useParams()
   
   const [planet, setPlanet] = useState(null);
-  
+  const [films, setFilms] = useState([]);
+
   useEffect(() => {
     api.get(`/planets/${id.id}`)
        .then((response) => {
          console.log(response);
          setPlanet(response.data)
+
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
@@ -62,6 +64,12 @@ const Planet = () => {
                 <BsPeople/> População:
             </h3>
             <p>{planet.population}</p>
+          </div>
+          <div className="info">
+            <h3>
+                <BsPeople/> Filmes:
+            </h3>
+          
           </div>
         </>
       : (<Loading/>)}
