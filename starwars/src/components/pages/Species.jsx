@@ -8,7 +8,6 @@ import Loading from "../layout/Loading";
 import { getUrlId } from "../utils/getUrlId";
 
 import './CardsGrid.css';
-import Planets from "./Planets";
 
 const Species = () => {
   const [species, setSpecies] = useState(null);
