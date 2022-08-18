@@ -47,7 +47,7 @@ const Person = () => {
             <h3>
                 <GiBodyHeight/> Altura:
             </h3>
-            <p>{person.height}</p>
+            <p>{person.height} cm</p>
           </div>
           <div className="info">
             <h3>
