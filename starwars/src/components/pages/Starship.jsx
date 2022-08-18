@@ -6,6 +6,11 @@ import Loading from "../layout/Loading";
 import { getUrlId } from "../utils/getUrlId";
 
 import{BiNavigation} from "react-icons/bi";
+import {AiOutlineColumnWidth} from "react-icons/ai";
+import {MdOutlineAttachMoney} from "react-icons/md";
+import {BsSpeedometer, BsFilm} from "react-icons/bs";
+import {IoIosPeople} from "react-icons/io";
+import {FaWeightHanging} from "react-icons/fa";
 
 import './Film.css';
 
@@ -58,45 +63,47 @@ const Starship = () => {
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Custo em créditos:
+                <MdOutlineAttachMoney/> Custo em créditos:
             </h3>
             <p>{starship.cost_in_credits}</p>
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Comprimento:
+                <AiOutlineColumnWidth/> Comprimento:
             </h3>
             <p>{starship.length}</p>
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Velocidade Máxima na Atmosfera:
+                <BsSpeedometer/> Velocidade Máxima na Atmosfera:
             </h3>
             <p>{starship.max_atmosphering_speed}</p>
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Passageiros:
+                <IoIosPeople/> Passageiros:
             </h3>
             <p>{starship.passengers}</p>
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Capacidade de Carga:
+                <FaWeightHanging/> Capacidade de Carga:
             </h3>
             <p>{starship.cargo_capacity}</p>
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Pilotos:
+                <IoIosPeople/> Pilotos:
             </h3>
             <p>{starship.pilots}</p>
+            
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Filmes:
+                <BsFilm/> Filmes:
             </h3>
             <p>{starship.films}</p>
+          
           </div>
         </>
       : (<Loading/>)}
