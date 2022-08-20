@@ -18,6 +18,7 @@ const Planet = () => {
   
   const [planet, setPlanet] = useState(null);
   const [films, setFilms] = useState([]); //URL DO FILME
+  const [residents, setResidents] = useState([]);
 
   useEffect(() => {
     api.get(`/planets/${id.id}`)
@@ -34,6 +35,12 @@ const Planet = () => {
   useEffect(() => {
     if(planet?.films) {
       setFilms(planet.films)
+    }
+  }, [planet]);
+
+  useEffect(() => {
+    if(planet?.residents) {
+      setResidents(planet.residents)
     }
   }, [planet]);
 
@@ -79,6 +86,16 @@ const Planet = () => {
               </h3>
               {films.map((film)=> (
                 <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
+          {residents ? (
+            <div className="info">
+              <h3>
+                  <BsPeople/> Residentes:
+              </h3>
+              {residents.map((resident)=> (
+                <ObjName objURL={resident} key={resident}/>
               ))}
             </div>
           ) : null}
