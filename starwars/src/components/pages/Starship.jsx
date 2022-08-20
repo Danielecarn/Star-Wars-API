@@ -8,7 +8,7 @@ import { getUrlId } from "../utils/getUrlId";
 import{BiNavigation} from "react-icons/bi";
 import {AiOutlineColumnWidth} from "react-icons/ai";
 import {MdOutlineAttachMoney} from "react-icons/md";
-import {BsSpeedometer, BsFilm} from "react-icons/bs";
+import {BsSpeedometer, BsFilm, BsFillGearFill} from "react-icons/bs";
 import {IoIosPeople} from "react-icons/io";
 import {FaWeightHanging} from "react-icons/fa";
 
@@ -36,18 +36,12 @@ const Starship = () => {
 
   useEffect(() => {
     if(starship?.films) {
-      console.log( "FILMES" ,starship.films);
       setFilms(starship.films)
     }
   }, [starship]);
-
-  var f = films.map((f)=>getUrlId(f));
   
   console.log("ID DOS FILMES", films);
   
-  
-
-
   return (
     <div className="film-page">
       {starship ?
@@ -67,7 +61,7 @@ const Starship = () => {
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Fabricante:
+                <BsFillGearFill/> Fabricante:
             </h3>
             <p>{starship.manufacturer}</p>
           </div>
@@ -104,7 +98,7 @@ const Starship = () => {
           {films ? (
             <div className="info">
               <h3>
-                  <FaWeightHanging/> Filmes:
+                  <BsFilm/> Filmes:
               </h3>
               {films.map((film)=> (
                 <ObjName objURL={film} key={film}/>

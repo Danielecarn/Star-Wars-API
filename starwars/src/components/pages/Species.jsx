@@ -26,7 +26,7 @@ const Species = () => {
   return (
     <div className="container">
       <div className="title">
-        <h2>Species</h2>
+        <h2>Espécies</h2>
       </div>
       <div className="cards-container">
         {Array.isArray(species) ? species.map(specie => (

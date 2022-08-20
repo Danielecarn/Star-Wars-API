@@ -26,7 +26,7 @@ const Starships = () => {
   return (
     <div className="container">
       <div className="title">
-        <h2>Starships</h2>
+        <h2>Naves</h2>
       </div>
       <div className="cards-container">
         {Array.isArray(starships) ? starships.map(starship => (
