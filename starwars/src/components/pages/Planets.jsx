@@ -26,7 +26,7 @@ const Planets = () => {
   return (
     <div className="container">
       <div className="title">
-        <h2>Planetas</h2>
+        <h3>Planetas</h3>
       </div>
       <div className="cards-container">
         {Array.isArray(planets) ? planets.map(planet => (

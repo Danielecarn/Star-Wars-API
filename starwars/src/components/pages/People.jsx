@@ -25,7 +25,7 @@ const People = () => {
   return (
     <div className='container'>
       <div className='title'>
-        <h2>Personagens</h2>
+        <h3>Personagens</h3>
       </div>
       <div className='cards-container'>
         {Array.isArray(people) ? people.map(person => (
