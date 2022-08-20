@@ -10,15 +10,20 @@ import './Film.css';
 import{BiNavigation} from "react-icons/bi";
 import {AiOutlineColumnWidth} from "react-icons/ai";
 import {MdOutlineAttachMoney} from "react-icons/md";
-import {BsSpeedometer, BsFilm} from "react-icons/bs";
+import {BsSpeedometer, BsFilm, BsFillGearFill} from "react-icons/bs";
 import {IoIosPeople} from "react-icons/io";
 import {FaWeightHanging} from "react-icons/fa";
+import {GiPlanePilot} from "react-icons/gi";
+
+import ObjName from '../ObjName';
 
 const Vehicle = () => {
 
   const id = useParams()
   
-  const [vehicle, setVehicle] = useState(null);
+  const [vehicle, setVehicle] = useState();
+  const [films, setFilms] = useState([]); //URL DO FILME
+  
   
   useEffect(() => {
     api.get(`/vehicles/${id.id}`)
@@ -30,6 +35,12 @@ const Vehicle = () => {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
+
+  useEffect(() => {
+    if(vehicle?.films) {
+      setFilms(vehicle.films)
+    }
+  }, [vehicle]);
 
   return (
     <div className="film-page">
@@ -50,7 +61,7 @@ const Vehicle = () => {
           </div>
           <div className="info">
             <h3>
-                <BiNavigation/> Fabricante:
+                <BsFillGearFill/> Fabricante:
             </h3>
             <p>{vehicle.manufacturer}</p>
           </div>
@@ -84,6 +95,26 @@ const Vehicle = () => {
             </h3>
             <p>{vehicle.cargo_capacity}</p>
           </div>
+          {films ? (
+            <div className="info">
+              <h3>
+                  <BsFilm/> Filmes:
+              </h3>
+              {films.map((film)=> (
+                <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
+          {films ? (
+            <div className="info">
+              <h3>
+                  <GiPlanePilot/> Pilotos:
+              </h3>
+              {films.map((film)=> (
+                <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
         </>
       : (<Loading/>)}
 

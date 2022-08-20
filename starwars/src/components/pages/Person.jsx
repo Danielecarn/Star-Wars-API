@@ -7,14 +7,16 @@ import Loading from "../layout/Loading";
 import { getUrlId } from "../utils/getUrlId";
 
 import './Film.css'
-import {BsGenderAmbiguous} from 'react-icons/bs';
+import {BsGenderAmbiguous, BsFilm} from 'react-icons/bs';
 import {GiBodyHeight} from 'react-icons/gi';
 import {FaBirthdayCake} from 'react-icons/fa'
+import ObjName from "../ObjName";
 
 const Person = () => {
   const id = useParams()
   
   const [person, setPerson] = useState(null);
+  const [films, setFilms] = useState([]); //URL DO FILME
   
   useEffect(() => {
     api.get(`/people/${id.id}`)
@@ -26,6 +28,13 @@ const Person = () => {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
+
+  useEffect(() => {
+    if(person?.films) {
+      setFilms(person.films)
+    }
+  }, [person]);
+
   return (
     <div className="film-page">
       {person ? 
@@ -55,6 +64,16 @@ const Person = () => {
             </h3>
             <p>{person.birth_year}</p>
           </div>
+          {films ? (
+            <div className="info">
+              <h3>
+                  <BsFilm/> Filmes:
+              </h3>
+              {films.map((film)=> (
+                <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
         </>
       : (<Loading/>)}
     </div>

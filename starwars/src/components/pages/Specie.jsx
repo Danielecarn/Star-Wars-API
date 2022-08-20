@@ -10,11 +10,15 @@ import {TbLanguage} from "react-icons/tb";
 import {AiOutlineColumnHeight} from "react-icons/ai";
 import {BiTime} from 'react-icons/bi';
 import {GoPrimitiveDot} from 'react-icons/go';
+import {BsFilm} from "react-icons/bs";
+
+import ObjName from "../ObjName";
 
 const Specie = () => {
   const id = useParams()
   
   const [specie, setSpecie] = useState(null);
+  const [films, setFilms] = useState([]); //URL DO FILME
   
   useEffect(() => {
     api.get(`/species/${id.id}`)
@@ -26,6 +30,12 @@ const Specie = () => {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
+
+  useEffect(() => {
+    if(specie?.films) {
+      setFilms(specie.films)
+    }
+  }, [specie]);
 
   return (
     <div className="film-page">
@@ -62,6 +72,16 @@ const Specie = () => {
             </h3>
             <p>{specie.average_lifespan} anos</p>
           </div>
+          {films ? (
+            <div className="info">
+              <h3>
+                  <BsFilm/> Filmes:
+              </h3>
+              {films.map((film)=> (
+                <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
         </>
       : (<Loading/>)}
 

@@ -6,9 +6,7 @@ import { getUrl, getUrlId } from './utils/getUrlId';
 const Card = ({imgURL, title, object, showLink = true}) => {
   return (
     <div className="card">
-        {imgURL ? (
-          <img src={imgURL} alt={`Imagem de ${title}`} />
-        ): <p>NÃO TEM IMAGEM</p>}
+        <img src={imgURL} alt={`Imagem de ${title}`} />
         <h2>{title}</h2>
         {showLink && <Link to={`/${getUrl(object.url)}/${getUrlId(object.url)}`}>Detalhes</Link>}
     </div>

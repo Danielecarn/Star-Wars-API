@@ -48,6 +48,9 @@
 
 .info a{
     margin-right: 2rem;
+    display: flex;
+    text-align: left;
+    margin: 0 0 .5rem 2rem;
 }
 
 .description {
@@ -56,5 +59,6 @@
 
 .description p{
     line-height: 1.4rem;
+    
 }
 

@@ -8,15 +8,16 @@ import { getUrlId } from "../utils/getUrlId";
 import {CgCodeClimate} from 'react-icons/cg';
 import {AiOutlineColumnWidth} from "react-icons/ai";
 import {SiGrav} from "react-icons/si";
-import {BsPeople} from 'react-icons/bs';
+import {BsPeople,BsFilm} from 'react-icons/bs';
 
 import './Film.css'
+import ObjName from "../ObjName";
 
 const Planet = () => {
   const id = useParams()
   
   const [planet, setPlanet] = useState(null);
-  const [films, setFilms] = useState([]);
+  const [films, setFilms] = useState([]); //URL DO FILME
 
   useEffect(() => {
     api.get(`/planets/${id.id}`)
@@ -29,6 +30,12 @@ const Planet = () => {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
+
+  useEffect(() => {
+    if(planet?.films) {
+      setFilms(planet.films)
+    }
+  }, [planet]);
 
   return (
     <div className="film-page">
@@ -65,12 +72,16 @@ const Planet = () => {
             </h3>
             <p>{planet.population}</p>
           </div>
-          <div className="info">
-            <h3>
-                <BsPeople/> Filmes:
-            </h3>
-          
-          </div>
+          {films ? (
+            <div className="info">
+              <h3>
+                  <BsFilm/> Filmes:
+              </h3>
+              {films.map((film)=> (
+                <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
         </>
       : (<Loading/>)}
     </div>
