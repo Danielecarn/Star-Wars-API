@@ -17,19 +17,19 @@ const Navbar = () => {
       </div>
         <ul className='list'>
           <li className='item'>
-            <Link to='/people'>People</Link>
+            <Link to='/people'>Personagens</Link>
           </li>
           <li className='item'>
-            <Link to='/planets'>Planets</Link>
+            <Link to='/planets'>Planetas</Link>
           </li>
           <li className='item'>
-            <Link to='/species'>Species</Link>
+            <Link to='/species'>Espécies</Link>
           </li>
           <li className='item'>
-            <Link to='/starships'>Starships</Link>
+            <Link to='/starships'>Naves</Link>
           </li>
           <li className='item'>
-            <Link to='/vehicles'>Vehicles</Link>
+            <Link to='/vehicles'>Veículos</Link>
           </li>
         </ul>        
     </nav>
