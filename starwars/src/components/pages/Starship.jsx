@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import Card from "../Card";
 import Loading from "../layout/Loading";
-import { getUrl, getUrlId } from "../utils/getUrlId";
+import { getUrlId } from "../utils/getUrlId";
 
 import{BiNavigation} from "react-icons/bi";
 import {AiOutlineColumnWidth} from "react-icons/ai";
@@ -12,9 +12,8 @@ import {BsSpeedometer, BsFilm} from "react-icons/bs";
 import {IoIosPeople} from "react-icons/io";
 import {FaWeightHanging} from "react-icons/fa";
 
-import axios from "axios";
-
 import './Film.css';
+import ObjName from "../ObjName";
 
 const Starship = () => {
   const id = useParams()
@@ -46,26 +45,7 @@ const Starship = () => {
   
   console.log("ID DOS FILMES", films);
   
-  const FilmName = ({filmURL}) => {
-    const [filmData, setFilmData] = useState({});
-
-    useEffect(() => {
-      axios.get(filmURL)
-         .then((response) => {
-          console.log(response);
-          setFilmData(response.data)
-        })
-        .catch((err) => {
-          console.error("ops! ocorreu um erro : " + err);
-        });
-    }, []);
-    return(
-      <Link to={`/${getUrl(filmURL)}/${getUrlId(filmURL)}`}>
-        {filmData.title}
-      </Link>
-     
-    );
-  } 
+  
 
 
   return (
@@ -127,7 +107,7 @@ const Starship = () => {
                   <FaWeightHanging/> Filmes:
               </h3>
               {films.map((film)=> (
-                <FilmName filmURL={film} key={film}/>
+                <ObjName objURL={film} key={film}/>
               ))}
             </div>
           ) : null}
