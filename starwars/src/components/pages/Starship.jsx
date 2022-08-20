@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api from "../../services/api";
 import Card from "../Card";
 import Loading from "../layout/Loading";
-import { getUrlId } from "../utils/getUrlId";
+import { getUrl, getUrlId } from "../utils/getUrlId";
 
 import{BiNavigation} from "react-icons/bi";
 import {AiOutlineColumnWidth} from "react-icons/ai";
@@ -12,13 +12,16 @@ import {BsSpeedometer, BsFilm} from "react-icons/bs";
 import {IoIosPeople} from "react-icons/io";
 import {FaWeightHanging} from "react-icons/fa";
 
+import axios from "axios";
+
 import './Film.css';
 
 const Starship = () => {
   const id = useParams()
   
   const [starship, setStarship] = useState(null);
- 
+  const [films, setFilms] = useState([]); //URL DO FILME
+  
   useEffect(() => {
     api.get(`/starships/${id.id}`)
        .then((response) => {
@@ -34,9 +37,36 @@ const Starship = () => {
 
   useEffect(() => {
     if(starship?.films) {
-      console.log(starship.films);
+      console.log( "FILMES" ,starship.films);
+      setFilms(starship.films)
     }
   }, [starship]);
+
+  var f = films.map((f)=>getUrlId(f));
+  
+  console.log("ID DOS FILMES", films);
+  
+  const FilmName = ({filmURL}) => {
+    const [filmData, setFilmData] = useState({});
+
+    useEffect(() => {
+      axios.get(filmURL)
+         .then((response) => {
+          console.log(response);
+          setFilmData(response.data)
+        })
+        .catch((err) => {
+          console.error("ops! ocorreu um erro : " + err);
+        });
+    }, []);
+    return(
+      <Link to={`/${getUrl(filmURL)}/${getUrlId(filmURL)}`}>
+        {filmData.title}
+      </Link>
+     
+    );
+  } 
+
 
   return (
     <div className="film-page">
@@ -91,20 +121,16 @@ const Starship = () => {
             </h3>
             <p>{starship.cargo_capacity}</p>
           </div>
-          <div className="info">
-            <h3>
-                <IoIosPeople/> Pilotos:
-            </h3>
-            <p>{starship.pilots}</p>
-            
-          </div>
-          <div className="info">
-            <h3>
-                <BsFilm/> Filmes:
-            </h3>
-            <p>{starship.films}</p>
-          
-          </div>
+          {films ? (
+            <div className="info">
+              <h3>
+                  <FaWeightHanging/> Filmes:
+              </h3>
+              {films.map((film)=> (
+                <FilmName filmURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
         </>
       : (<Loading/>)}
 

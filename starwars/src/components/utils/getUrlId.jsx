@@ -10,5 +10,4 @@ export function getUrl(url) {
   const newUrl= splitedUrl[4];
   return newUrl;
 }
-
   

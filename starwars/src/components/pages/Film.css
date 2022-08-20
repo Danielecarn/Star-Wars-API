@@ -46,6 +46,10 @@
     gap: 0.5rem;
 }
 
+.info a{
+    margin-right: 2rem;
+}
+
 .description {
     padding-bottom: 5rem;
 }

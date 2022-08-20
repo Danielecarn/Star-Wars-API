@@ -84,20 +84,6 @@ const Vehicle = () => {
             </h3>
             <p>{vehicle.cargo_capacity}</p>
           </div>
-          <div className="info">
-            <h3>
-                <IoIosPeople/> Pilotos:
-            </h3>
-            <p>{vehicle.pilots}</p>
-            
-          </div>
-          <div className="info">
-            <h3>
-                <BsFilm/> Filmes:
-            </h3>
-            <p>{vehicle.films}</p>
-          
-          </div>
         </>
       : (<Loading/>)}
 
