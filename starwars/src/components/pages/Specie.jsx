@@ -8,9 +8,9 @@ import { getUrlId } from "../utils/getUrlId";
 import './Film.css';
 import {TbLanguage} from "react-icons/tb";
 import {AiOutlineColumnHeight} from "react-icons/ai";
-import {BiTime} from 'react-icons/bi';
+import {BiTime, BiPlanet} from 'react-icons/bi';
 import {GoPrimitiveDot} from 'react-icons/go';
-import {BsFilm} from "react-icons/bs";
+import {BsFilm, BsFillFileEarmarkPersonFill} from "react-icons/bs";
 
 import ObjName from "../ObjName";
 
@@ -19,6 +19,8 @@ const Specie = () => {
   
   const [specie, setSpecie] = useState(null);
   const [films, setFilms] = useState([]); //URL DO FILME
+  const [people, setPeople] = useState([]);
+  const [homeworld, setHomeWorld] = useState();
   
   useEffect(() => {
     api.get(`/species/${id.id}`)
@@ -34,6 +36,18 @@ const Specie = () => {
   useEffect(() => {
     if(specie?.films) {
       setFilms(specie.films)
+    }
+  }, [specie]);
+
+  useEffect(() => {
+    if(specie?.people) {
+      setPeople(specie.people)
+    }
+  }, [specie]);
+
+  useEffect(() => {
+    if(specie?.homeworld) {
+      setHomeWorld(specie.homeworld)
     }
   }, [specie]);
 
@@ -80,6 +94,24 @@ const Specie = () => {
               {films.map((film)=> (
                 <ObjName objURL={film} key={film}/>
               ))}
+            </div>
+          ) : null}
+          {people ? (
+            <div className="info">
+              <h3>
+                  <BsFillFileEarmarkPersonFill/> Pertencem a espécie:
+              </h3>
+              {people.map((person)=> (
+                <ObjName objURL={person} key={person}/>
+              ))}
+            </div>
+          ) : null}
+          {homeworld ? (
+            <div className="info">
+              <h3>
+                  <BiPlanet/> Planeta Natal:
+              </h3>
+              <ObjName objURL={homeworld} key={homeworld}/>
             </div>
           ) : null}
         </>

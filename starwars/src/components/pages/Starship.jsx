@@ -11,6 +11,7 @@ import {MdOutlineAttachMoney} from "react-icons/md";
 import {BsSpeedometer, BsFilm, BsFillGearFill} from "react-icons/bs";
 import {IoIosPeople} from "react-icons/io";
 import {FaWeightHanging} from "react-icons/fa";
+import {GiPlanePilot} from "react-icons/gi";
 
 import './Film.css';
 import ObjName from "../ObjName";
@@ -20,6 +21,7 @@ const Starship = () => {
   
   const [starship, setStarship] = useState(null);
   const [films, setFilms] = useState([]); //URL DO FILME
+  const [pilots, setPilots] = useState([]);
   
   useEffect(() => {
     api.get(`/starships/${id.id}`)
@@ -37,6 +39,12 @@ const Starship = () => {
   useEffect(() => {
     if(starship?.films) {
       setFilms(starship.films)
+    }
+  }, [starship]);
+
+  useEffect(() => {
+    if(starship?.pilots) {
+      setPilots(starship.pilots)
     }
   }, [starship]);
   
@@ -102,6 +110,17 @@ const Starship = () => {
               </h3>
               {films.map((film)=> (
                 <ObjName objURL={film} key={film}/>
+              ))}
+            </div>
+          ) : null}
+
+          {pilots ? (
+            <div className="info">
+              <h3>
+                  <GiPlanePilot/> Pilotos:
+              </h3>
+              {pilots.map((pilot)=> (
+                <ObjName objURL={pilot} key={pilot}/>
               ))}
             </div>
           ) : null}

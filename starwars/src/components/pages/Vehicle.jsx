@@ -13,6 +13,7 @@ import {MdOutlineAttachMoney} from "react-icons/md";
 import {BsSpeedometer, BsFilm, BsFillGearFill} from "react-icons/bs";
 import {IoIosPeople} from "react-icons/io";
 import {FaWeightHanging} from "react-icons/fa";
+import {MdClass} from "react-icons/md";
 import {GiPlanePilot} from "react-icons/gi";
 
 import ObjName from '../ObjName';
@@ -23,7 +24,7 @@ const Vehicle = () => {
   
   const [vehicle, setVehicle] = useState();
   const [films, setFilms] = useState([]); //URL DO FILME
-  
+  const [pilots, setPilots ] = useState([]);
   
   useEffect(() => {
     api.get(`/vehicles/${id.id}`)
@@ -39,6 +40,12 @@ const Vehicle = () => {
   useEffect(() => {
     if(vehicle?.films) {
       setFilms(vehicle.films)
+    }
+  }, [vehicle]);
+
+  useEffect(() => {
+    if(vehicle?.pilots) {
+      setPilots(vehicle.pilots)
     }
   }, [vehicle]);
 
@@ -64,6 +71,12 @@ const Vehicle = () => {
                 <BsFillGearFill/> Fabricante:
             </h3>
             <p>{vehicle.manufacturer}</p>
+          </div>
+          <div className="info">
+            <h3>
+                <MdClass/> Classe:
+            </h3>
+            <p>{vehicle.vehicle_class}</p>
           </div>
           <div className="info">
             <h3>
@@ -105,13 +118,14 @@ const Vehicle = () => {
               ))}
             </div>
           ) : null}
-          {films ? (
+
+          {pilots ? (
             <div className="info">
               <h3>
                   <GiPlanePilot/> Pilotos:
               </h3>
-              {films.map((film)=> (
-                <ObjName objURL={film} key={film}/>
+              {pilots.map((pilot)=> (
+                <ObjName objURL={pilot} key={pilot}/>
               ))}
             </div>
           ) : null}
