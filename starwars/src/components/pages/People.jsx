@@ -6,8 +6,12 @@ import Card from '../Card';
 import { getUrlId } from '../utils/getUrlId';
 
 import './CardsGrid.css';
+import BasicPagination from '../BasicPagination';
+
 
 const People = () => {
+
+
   const [people, setPeople] = useState(null);
   
   useEffect(() => {
@@ -37,6 +41,9 @@ const People = () => {
             />
           ))
           : (<Loading/>)}
+      </div>
+      <div className='paginacao'> 
+        {BasicPagination()}
       </div>
     </div>
   )

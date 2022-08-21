@@ -14,3 +14,31 @@
     margin: 0 auto;
 }
 
+.paginacao{
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginacao svg{
+    color: #fff;
+}
+
+.paginacao div{
+    color: #fff;
+}
+
+.paginacao svg:hover{
+    color: #ffe81f;
+}
+
+.paginacao button,
+.paginacao button p{
+    color: #fff;
+}
+
+.paginacao button:hover{
+    color: #ffe81f;
+}
