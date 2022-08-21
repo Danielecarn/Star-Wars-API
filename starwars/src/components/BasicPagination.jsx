@@ -1,11 +1,21 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 
-export default function BasicPagination() {
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#111',
+      contrastText: '#ffe81f',
+    },
+  },
+});
+
+export default function BasicPagination(pagesNumber) {
   return (
-    <Stack spacing={2}>
-      <Pagination count={10} color="primary" />
-    </Stack>
+    <ThemeProvider theme={theme}>  
+      <Pagination count={pagesNumber} siblingCount={0} size="small" color='neutral'/>
+    </ThemeProvider>
   );
 }

@@ -12,18 +12,22 @@ import BasicPagination from '../BasicPagination';
 const People = () => {
 
 
-  const [people, setPeople] = useState(null);
+  const [people, setPeople] = useState();
+  const [qtdPeople, setQtdPeople] = useState();
   
   useEffect(() => {
     api.get(`/people/`)
        .then((response) => {
          console.log(response);
          setPeople(response.data.results)
+         setQtdPeople(response.data.count);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
+
+  const pagesNumber = Math.ceil(qtdPeople/10);
 
 
   return (
@@ -31,6 +35,10 @@ const People = () => {
       <div className='title'>
         <h3>Personagens</h3>
       </div>
+      <div className='paginacao'> 
+        {BasicPagination(pagesNumber)}
+      </div>
+      
       <div className='cards-container'>
         {Array.isArray(people) ? people.map(person => (
             <Card 
@@ -42,9 +50,7 @@ const People = () => {
           ))
           : (<Loading/>)}
       </div>
-      <div className='paginacao'> 
-        {BasicPagination()}
-      </div>
+      
     </div>
   )
 }
