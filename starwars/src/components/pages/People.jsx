@@ -13,7 +13,7 @@ const People = () => {
 
 
   const [people, setPeople] = useState();
-  const [qtdPeople, setQtdPeople] = useState();
+  const [qtdPeople, setQtdPeople] = useState(Number);
   
   useEffect(() => {
     api.get(`/people/`)
@@ -28,7 +28,6 @@ const People = () => {
   }, []);
 
   const pagesNumber = Math.ceil(qtdPeople/10);
-
 
   return (
     <div className='container'>
