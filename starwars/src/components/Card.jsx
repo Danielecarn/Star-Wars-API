@@ -6,7 +6,6 @@ import { getUrl, getUrlId } from './utils/getUrlId';
 
 const Card = ({imgURL, title, object, showLink = true}) => {
 
-  console.log("ESSA É A IMAGEM", imgURL)
   return (
     <div className="card">
         {/* <img src={imgURL} alt={`Imagem de ${title}`}/> */}

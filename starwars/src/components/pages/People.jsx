@@ -1,31 +1,28 @@
 import { useEffect, useState } from 'react';
 
 import Loading from '../layout/Loading';
+import Pagination from '../layout/Pagination';
 import api from '../../services/api';
 import Card from '../Card';
 import { getUrlId } from '../utils/getUrlId';
 
 import './CardsGrid.css';
-import BasicPagination from '../BasicPagination';
-
 
 const People = () => {
-
-
   const [people, setPeople] = useState();
   const [qtdPeople, setQtdPeople] = useState(Number);
+  const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
-    api.get(`/people/`)
+    api.get(`/people/${currentPage != 1 ? '?page='+currentPage : ""}`)
        .then((response) => {
-         console.log(response);
-         setPeople(response.data.results)
-         setQtdPeople(response.data.count);
+        setPeople(response.data.results)
+        setQtdPeople(response.data.count);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
       });
-  }, []);
+  }, [currentPage]);
 
   const pagesNumber = Math.ceil(qtdPeople/10);
 
@@ -35,7 +32,12 @@ const People = () => {
         <h3>Personagens</h3>
       </div>
       <div className='paginacao'> 
-        {BasicPagination(pagesNumber)}
+        <Pagination
+          isFirst={currentPage === 1}
+          isLast={currentPage === pagesNumber}
+          navigateBack={() => setCurrentPage(currentPage - 1)}
+          navigateNext={() => setCurrentPage(currentPage + 1)}
+        />
       </div>
       
       <div className='cards-container'>

@@ -1,0 +1,12 @@
+.pagination-button {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  background-color: black;
+  border-width: 0px;
+  transition: .5s;
+}
+
+.pagination-button:hover {
+  background-color: #111;
+}
