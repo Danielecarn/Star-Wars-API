@@ -8,8 +8,7 @@ const ObjName = ({objURL}) => {
 
     useEffect(() => {
       axios.get(objURL)
-         .then((response) => {
-          console.log(response);
+        .then((response) => {
           setObjData(response.data)
         })
         .catch((err) => {

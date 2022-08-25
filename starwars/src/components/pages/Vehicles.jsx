@@ -18,7 +18,6 @@ const Vehicles = () => {
   useEffect(() => { 
     api.get(`/vehicles/${currentPage != 1 ? "?page="+currentPage : ""}`)
        .then((response) => {
-         console.log(response);
         setVehicles(response.data.results)
         setQtdVehicles(response.data.count)
       })

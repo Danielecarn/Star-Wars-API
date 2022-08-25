@@ -16,8 +16,7 @@ const Home = () => {
   useEffect(() => {
     api.get("/films/")
        .then((response) => {
-         console.log(response);
-         setFilms(response.data.results)
+        setFilms(response.data.results)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);

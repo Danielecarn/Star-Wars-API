@@ -28,8 +28,7 @@ const Person = () => {
   useEffect(() => {
     api.get(`/people/${id.id}`)
        .then((response) => {
-         console.log(response);
-         setPerson(response.data)
+        setPerson(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
@@ -95,7 +94,7 @@ const Person = () => {
             </h3>
             <p>{person.birth_year}</p>
           </div>
-          {films ? (
+          {films != "" ? (
             <div className="info">
               <h3>
                   <BsFilm/> Filmes:
@@ -115,7 +114,7 @@ const Person = () => {
             </div>
           ) : null}
 
-          {starships ? (
+          {starships != "" ? (
             <div className="info">
               <h3>
                   <BiNavigation/> Naves:
@@ -126,7 +125,7 @@ const Person = () => {
             </div>
           ) : null}
 
-          {vehicles ? (
+          {vehicles != "" ? (
             <div className="info">
               <h3>
                   <BiNavigation/> Veículos:

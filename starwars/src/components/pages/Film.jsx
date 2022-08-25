@@ -33,8 +33,7 @@ const Film = () => {
   useEffect(() => {
     api.get(`/films/${id.id}`)
        .then((response) => {
-         console.log(response);
-         setFilm(response.data)
+        setFilm(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
@@ -95,7 +94,7 @@ const Film = () => {
             <p>{film.opening_crawl}</p>
           </div>
 
-          {people ? (
+          {people != "" ? (
             <div className="info">
               <h3>
                   <BsFillFileEarmarkPersonFill/> Personagens:
@@ -106,7 +105,7 @@ const Film = () => {
             </div>
           ) : null}
 
-          {planets ? (
+          {planets != "" ? (
             <div className="info">
               <h3>
                   <BiPlanet/> Planetas:
@@ -117,7 +116,7 @@ const Film = () => {
             </div>
           ) : null}
 
-          {species ? (
+          {species != "" ? (
             <div className="info">
               <h3>
                   <TbPoint/> Espécie:
@@ -128,7 +127,7 @@ const Film = () => {
             </div>
           ) : null}
 
-          {starships ? (
+          {starships != "" ? (
             <div className="info">
               <h3>
                   <SiStarship/> Naves:
@@ -139,7 +138,7 @@ const Film = () => {
             </div>
           ) : null}
 
-          {vehicles ? (
+          {vehicles != "" ? (
             <div className="info">
               <h3>
                   <BiNavigation/> Veículos:

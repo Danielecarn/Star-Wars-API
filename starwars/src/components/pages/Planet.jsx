@@ -23,9 +23,7 @@ const Planet = () => {
   useEffect(() => {
     api.get(`/planets/${id.id}`)
        .then((response) => {
-         console.log(response);
-         setPlanet(response.data)
-
+        setPlanet(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
@@ -79,7 +77,7 @@ const Planet = () => {
             </h3>
             <p>{planet.population}</p>
           </div>
-          {films ? (
+          {films != "" ? (
             <div className="info">
               <h3>
                   <BsFilm/> Filmes:
@@ -89,7 +87,7 @@ const Planet = () => {
               ))}
             </div>
           ) : null}
-          {residents ? (
+          {residents != "" ? (
             <div className="info">
               <h3>
                   <BsPeople/> Residentes:

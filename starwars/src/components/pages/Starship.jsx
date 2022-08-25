@@ -26,15 +26,12 @@ const Starship = () => {
   useEffect(() => {
     api.get(`/starships/${id.id}`)
        .then((response) => {
-        console.log(response);
         setStarship(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
       });
   }, []);
-
-  useEffect(() => console.table(starship), [starship]);
 
   useEffect(() => {
     if(starship?.films) {
@@ -47,8 +44,6 @@ const Starship = () => {
       setPilots(starship.pilots)
     }
   }, [starship]);
-  
-  console.log("ID DOS FILMES", films);
   
   return (
     <div className="film-page">
@@ -103,7 +98,7 @@ const Starship = () => {
             </h3>
             <p>{starship.cargo_capacity}</p>
           </div>
-          {films ? (
+          {films != "" ? (
             <div className="info">
               <h3>
                   <BsFilm/> Filmes:
@@ -114,7 +109,7 @@ const Starship = () => {
             </div>
           ) : null}
 
-          {pilots ? (
+          {pilots != "" ? (
             <div className="info">
               <h3>
                   <GiPlanePilot/> Pilotos:

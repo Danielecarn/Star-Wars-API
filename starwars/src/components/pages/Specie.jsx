@@ -25,8 +25,7 @@ const Specie = () => {
   useEffect(() => {
     api.get(`/species/${id.id}`)
        .then((response) => {
-         console.log(response);
-         setSpecie(response.data)
+        setSpecie(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
@@ -86,7 +85,7 @@ const Specie = () => {
             </h3>
             <p>{specie.average_lifespan} anos</p>
           </div>
-          {films ? (
+          {films != "" ? (
             <div className="info">
               <h3>
                   <BsFilm/> Filmes:
@@ -96,7 +95,7 @@ const Specie = () => {
               ))}
             </div>
           ) : null}
-          {people ? (
+          {people != "" ? (
             <div className="info">
               <h3>
                   <BsFillFileEarmarkPersonFill/> Pertencem a espécie:

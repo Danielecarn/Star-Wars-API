@@ -29,8 +29,7 @@ const Vehicle = () => {
   useEffect(() => {
     api.get(`/vehicles/${id.id}`)
        .then((response) => {
-         console.log(response);
-         setVehicle(response.data)
+        setVehicle(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
@@ -108,7 +107,7 @@ const Vehicle = () => {
             </h3>
             <p>{vehicle.cargo_capacity}</p>
           </div>
-          {films ? (
+          {films != "" ? (
             <div className="info">
               <h3>
                   <BsFilm/> Filmes:
@@ -119,7 +118,7 @@ const Vehicle = () => {
             </div>
           ) : null}
 
-          {pilots ? (
+          {pilots != "" ? (
             <div className="info">
               <h3>
                   <GiPlanePilot/> Pilotos:
