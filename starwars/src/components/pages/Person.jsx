@@ -137,7 +137,7 @@ const Person = () => {
             </div>
           ) : null}
 
-          {species ? (
+          {species != "" ? (
             <div className="info">
               <h3>
                   <TbPoint/> Espécie:
