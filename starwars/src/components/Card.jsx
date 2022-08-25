@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import no_img from '../img/no_img.png';
-import no_img_large from '../img/no_img_large.jpg';
+import no_img_large from '../img/no_img_large.png';
 import './Card.css';
 import { getUrl, getUrlId } from './utils/getUrlId';
 
