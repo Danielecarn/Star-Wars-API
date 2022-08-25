@@ -12,14 +12,14 @@ import './CardsGrid.css';
 
 const Species = () => {
   const [species, setSpecies] = useState();
-  const [qtdSpecies, setQtdPeople] = useState(Number);
+  const [qtdSpecies, setQtdSpecies] = useState(Number);
   const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
     api.get(`/species/${currentPage != 1 ? '?page='+currentPage : ""}`)
        .then((response) => {
          setSpecies(response.data.results)
-         setQtdPeople(response.data.count)
+         setQtdSpecies(response.data.count)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
